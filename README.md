@@ -7,7 +7,7 @@ Project Plan:
 Rows (8'000): Picture names (e.g. 3_12-22-09.655)
 Columns (36): Keypoints in x and y as follows: 0x, 0y, 1x, 1y, ... , 17x, 17y
 
-The folder with the txt files is named "plankExercisingKeypointsPredicted"
+The folder with the txt files is named "plankExercisingKeypointsPredicted" and can be found in the drive folder: https://drive.google.com/open?id=1xIo56-Xmz_hPuXuhUnr-cUYANyrD-pMi
 
 2. Convert labeled keypoints to a Pandas DataFrame:
 Rows (8'000): Picture names (e.g. 3_12-22-09.655)
