@@ -7,11 +7,13 @@ def getAngle(a, b, c):
     ang = math.degrees(math.atan2(c[1] - b[1], c[0] - b[0]) - math.atan2(a[1] - b[1], a[0] - b[0]))
     return ang + 360 if ang < 0 else ang
 
+# load annotated DataFrame from outsourcing
 df_labeled = pd.read_pickle('annotatedDataFrame')
 df_labeled["angle"] = np.nan
 df_labeled["label"] = np.nan
 print(df_labeled)
 
+# iterrate through rows, and add label groundtruth to it (too high, too low, correct)
 for index, row in df_labeled.iterrows():
     angle = getAngle((row['x_3'], row['y_3']), (row['x_4'], row['y_4']), (row['x_6'], row['y_6']))
 
@@ -29,4 +31,6 @@ for index, row in df_labeled.iterrows():
     else:
         df_labeled.loc[index, 'label'] = 1
 print(df_labeled)
+
+# save labeled DataFrame
 df_labeled.to_pickle('labeledDataFrame')
