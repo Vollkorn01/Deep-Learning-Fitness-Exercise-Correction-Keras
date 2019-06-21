@@ -1,12 +1,12 @@
 import pandas as pd
 from keras.models import Sequential
 from keras.layers import Dense
-import numpy
+import numpy as np
 from sklearn.preprocessing import StandardScaler
 from sklearn.preprocessing import OneHotEncoder
 
 # fix random seed for reproducibility
-numpy.random.seed(7)
+np.random.seed(7)
 
 import os
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"   # see issue #152
@@ -30,6 +30,7 @@ print('datatype: ' + str(Y.dtype))
 # Feature Scaling
 sc = StandardScaler()
 X = sc.fit_transform(X)
+X = np.nan_to_num(X)
 print(X)
 
 # one hot encoding of labels
