@@ -17,3 +17,4 @@ for index, row in df.iterrows():
         df.drop(index, inplace=True)
 print(df)
 df.to_pickle('fullDataFrame')
+df.to_csv(r'fullDataFrame.csv')
