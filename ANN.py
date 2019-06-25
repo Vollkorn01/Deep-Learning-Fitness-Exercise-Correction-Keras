@@ -8,44 +8,40 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix
 import matplotlib.pyplot as plt
 import seaborn as sns
+import os
 
 # fix random seed for reproducibility
 np.random.seed(7)
 
-import os
+# use only CPU, since GPU didn't run on my pc
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"   # see issue #152
 os.environ["CUDA_VISIBLE_DEVICES"] = ""
 
+# import dataset and transform it to a numpy array
 dataset = pd.read_pickle('fullDataFrame')
 dataset = dataset.replace(r'\\n',' ', regex=True)
 dataset['label'] = dataset['label'].astype(int)
 print(dataset)
 dataset = dataset.values
 
+# split dataset in X (input) and Y (labels)
 X = dataset[:, 0:36]
 Y = dataset[:, 37]
 Y = Y.astype(int)
 
-print(X)
-print(Y)
-print('datatype: ' + str(Y.dtype))
 
-
-# Feature Scaling
+# Feature Scaling (all values between 0.0 and 1.0)
 sc = StandardScaler()
 X = sc.fit_transform(X)
 X = np.nan_to_num(X)
-print(X)
 
 # one hot encoding of labels
 onehot_encoder = OneHotEncoder(sparse=False)
 Y = Y.reshape(len(Y), 1)
 Y = onehot_encoder.fit_transform(Y)
-print('ENCODED')
-print(Y)
 
 # split in train / test set
-X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.33, random_state=42, shuffle=False)  # maybe add shuffle=False
+X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.33, random_state=42, shuffle=False)
 
 
 # create model
@@ -63,15 +59,19 @@ model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accur
 # Fit the model
 model.fit(X_train, y_train, epochs=100, batch_size=10)
 
+# evaluate model
 eval_model=model.evaluate(X_train, y_train)
 eval_model
 
+# transform predictions to 0 and 1 (instead of probabilities)
 y_pred=model.predict(X_test)
 y_pred =(y_pred > 0.5)
 
+# define confusion matrix
 cm = confusion_matrix(y_test.argmax(axis=1), y_pred.argmax(axis=1))
 print(cm)
 
+# print confusion matrix with labels and pretty colours
 def print_confusion_matrix(confusion_matrix, class_names, figsize=(10, 7), fontsize=14):
     """Prints a confusion matrix, as returned by sklearn.metrics.confusion_matrix, as a heatmap.
 
