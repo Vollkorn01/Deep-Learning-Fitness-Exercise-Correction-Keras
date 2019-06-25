@@ -1,5 +1,9 @@
 # DeepLearningExerciseCorrection
-Machine Learning Course at University of Zürich
+
+## Overview
+This repository is created during a Machine Learning Course at the University of Zürich.
+The goal is to detect mistakes from fitness exercises using outputs from human keypoint detection.
+![title]("images/19-17-24.187.humans.jpeg")
 
 Project Plan:
 
