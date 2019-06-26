@@ -1,4 +1,4 @@
-# DeepLearningExerciseCorrection
+# Correcting Wrong Posture on the Plank Fitness Exercise
 
 ## Overview
 This repository is created during the Neural Networks and Deep Learning course at the University of Zürich.
@@ -79,6 +79,9 @@ neural network could be trained to predict a continuous output, which shows the 
 
 Furthermore, the data is a time series. Therefore, a recurrent neural network such as an Long-Short-Term Memory Network could be trained such that
 past data flows into the prediction of the current frame which will probably increase accuracy even more.
+
+Of course, the network can be adapted to other fitness exercises as well. Plank is a relatively easy case, since it is a static exercise. 
+Other exercises that include repetitions, such as pushups or squats, will be more challenging and need a more sophisticated approach.
 
 ## Project Plan:
 
