@@ -49,7 +49,7 @@ Unfortunately, the data with the keypoints (= position of limbs such as shoulder
 5. Combine labels from 3. to dataframe from 1. to the final training dataset (file: combineDataSets.py)
 6. Standardize, Remove NaN's and split into train and testset (included in ANN.ipynb)
 
-We even did data augmentation to increase the size of the data set by flipping and rotating the keypoints. However, time was too restricted to implement it into the training dataset.
+We even did data augmentation to increase the size of the data set by flipping and scaling the keypoints (file: flipScaleKeypoints.ipynb) Unfortunately, time was too restricted to implement it into the training dataset.
 
 ## Architecture
 
