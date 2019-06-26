@@ -75,7 +75,7 @@ Adam
 
 ## Results
 
-The network yielded a top testset accuracy of 90 %, which beat the previous rule-based algorithm by more than 5 %, so this is a big success!
+The network yielded a top testset accuracy of 90 %, which beat the previous rule-based algorithm by around 8%!
 
 Even better: After looking at some predictions, the real accuracy is probably much higher, since many pictures are edge cases (e.g. where the angle was only 0.1 degree too high for a correct prediction) and therefore the predictions still make sense.
 
