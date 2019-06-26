@@ -75,7 +75,7 @@ Adam
 
 ## Results
 
-The network yielded a top accuracy of 90 %, which beat the previous rule-based algorithm by more than 5 %, so this is a big success!
+The network yielded a top testset accuracy of 90 %, which beat the previous rule-based algorithm by more than 5 %, so this is a big success!
 
 Even better: After looking at some predictions, the real accuracy is probably much higher, since many pictures are edge cases (e.g. where the angle was only 0.1 degree too high for a correct prediction) and therefore the predictions still make sense.
 
@@ -83,6 +83,13 @@ The following accuracy and loss plots show that the ANN learned very well alread
 
 ![title](images/accuracyGraph.png)
 ![title](images/lossGraph.png)
+
+
+
+The confusion matrix shows, that too low mistakes were detected very well and that the network had difficulties differentiating between too high and correct.
+![title](images/confusionMatrix.png)
+
+
 
 Training time was very low and can be run in under 2 minutes on a standard CPU.
 
