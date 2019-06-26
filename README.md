@@ -15,7 +15,7 @@ However, often the detection is erroneous:
 
 In this case, we would need to use another approach to detect an angle. This is time-consuming and prone to errors, since there are many possibilities of badly detected keypoints. Fortunately, thanks to our collected dataset and the power of neural networks this problem belong to the past!
 
-We trained an artificial neural network to detect whether the position of the back was *too low*, *correct* or *too high* from the keypoints, even if not all keypoints were detected.
+We trained an artificial neural network to detect whether the position of the back was **too low**, **correct** or **too high**, even if not all keypoints were detected.
 
 
 ## Training
