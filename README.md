@@ -13,7 +13,7 @@ The following picture shows the keypoint detection during a plank. In this case,
 
 ![title](images/19-17-24.187.humans.jpeg)
 
-However, often the detection is erroneous: 
+However, often the detection is incomplete or erroneous: 
 
 ![title](images/14-37-42.747.humans.jpeg)
 
@@ -49,6 +49,7 @@ Unfortunately, the data with the keypoints (= position of limbs such as shoulder
 5. Combine labels from 3. to dataframe from 1. to the final training dataset (file: combineDataSets.py)
 6. Standardize, Remove NaN's and split into train and testset (included in ANN.ipynb)
 
+We even did data augmentation to increase the size of the data set by flipping and rotating the keypoints. However, time was too restricted to implement it into the training dataset.
 
 ## Architecture
 
