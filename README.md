@@ -13,7 +13,7 @@ However, often the detection is erroneous:
 
 ![title](images/14-37-42.747.humans.jpeg)
 
-In this case, we would need to use another approach to detect an angle. This is time-consuming and prone to errors, since there are many possibilities of badly detected keypoints. Fortunately, thanks to our collected dataset and the power of neural networks these problems belong to the past!
+In this case, we would need to use another approach to detect an angle. This is time-consuming and prone to errors, since there are many possibilities of badly detected keypoints. Fortunately, thanks to our collected dataset and the power of neural networks this problem belong to the past!
 
 We trained an artificial neural network to detect whether the position of the back was too low, correct or too high from the keypoints, even if not all keypoints were detected.
 
@@ -27,7 +27,14 @@ VGG image annotator was used to label relevant keypoints:
 
 
 As a next step, we calculated the angle of the back from these keypoints. If the angle is between 178 and 190 degrees the position was correct (label 1), else too low (label 0) or too high (label 2). These thresholds were set by consulting a professional fitness coach.
-We then added the correct labels to the original data, where keypoints were often missing or erroneous, which was the dataset we trained on.
+We then added the correct labels to the original data, where keypoints were often missing or erroneous, which was the dataset we trained on. This is a snapshot of our dataset:
+
+![title](images/table.png)
+
+
+As you can see, many values are NaN's, which are values that were not detected and which makes the mistake classification difficult if done by a rule-based approach.
+
+
 
 ## Architecture
 
