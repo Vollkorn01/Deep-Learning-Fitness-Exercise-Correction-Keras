@@ -85,18 +85,18 @@ The following accuracy and loss plots show that the ANN learned very well alread
 
 Training time was very low and can be run in under 2 minutes on a standard CPU.
 
-## Future improvements:
+## Future improvements
 
 As already mentioned, wrong posture is often on a continuous scale. Therefore, instead of having discrete labels as outputs, the 
 neural network could be trained to predict a continuous output, which shows the magnitude of wrong posture.
 
 Furthermore, the data is a time series. Therefore, a recurrent neural network such as an Long-Short-Term Memory Network could be trained such that
-past data flows into the prediction of the current frame which will probably increase accuracy even more.
+past data flows into the prediction of the current frame. This would most-likely increase the accuracy.
 
 Of course, the network can be adapted to other fitness exercises as well. Plank is a relatively easy case, since it is a static exercise. 
 Other exercises that include repetitions, such as pushups or squats, will be more challenging and need a more sophisticated approach.
 
-## Project Plan:
+## Project Plan
 
 **1. Convert predicted keypoints from old algorithm (as txt files) to a Pandas DataFrame:**
 - Rows (8'000): Picture names (e.g. 3_12-22-09.655)
