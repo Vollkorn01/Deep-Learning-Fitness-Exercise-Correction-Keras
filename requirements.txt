@@ -1,7 +1,6 @@
 numpy
 scipy
 tensorflow
-tensorflow-gpu
 keras
 ipython
 jupyter
@@ -12,3 +11,4 @@ seaborn
 matplotlib
 sklearn
 pandas
+tensorflow-gpu
