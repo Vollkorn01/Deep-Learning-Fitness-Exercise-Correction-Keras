@@ -23,7 +23,7 @@ We trained an artificial neural network to detect whether the position of the ba
 
 ## Dataset
 
-In order to collect the ground-truth, we labeled 8'000 pictures of people doing plank. The images were labeled by freelancers on the outsourcing platform upwork and created from Beta users of the fitness app VAY Sports (www.vay-sports.com). The original images were removed to protect the privacy of the users. Labeling costs were 100$.
+In order to collect the ground-truth, we labeled 8'000 pictures of people doing planks. The images were labeled by freelancers on the outsourcing platform upwork and created from Beta users of the fitness app VAY Sports (www.vay-sports.com). The original images were removed to protect the privacy of the users. Labeling costs were 100$.
 VGG image annotator was used to label relevant keypoints:
 
 ![title](images/plankAnnotation.gif)
