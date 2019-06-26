@@ -32,23 +32,28 @@ We then added the correct labels to the original data, where keypoints were ofte
 ![title](images/table.png)
 
 
-As you can see, many values are NaN's, which are values that were not detected and which makes the mistake classification difficult if done by a rule-based approach.
+As you can see, many values are NaN's, which are values that were not detected and which makes a rule-based mistake detection difficult.
 
 
 
 ## Architecture
 
 After testing many combinations, the following architecture yielded the best results:
-Inputs: 36 features (18 keypoints with their x and y values)
 
-### 4 fully connected layers:
-1. layer: 36 neurons, activation relu
-2. layer: 18 neurons, activation relu
-3. layer: 9 neurons, activation relu
-4. layer: 3 output neurons, activation Softmax (Softmax makes sure, that the outputs get transformed to probabilities)
+**Inputs:** 
+36 features (18 keypoints with their x and y values)
 
-### Loss function: Categorical crossentropy (since we're delaing with multi label outputs)
-### Optimizer: adam
+**4 fully connected layers:**
+1. layer: 36 neurons, activation: relu
+2. layer: 18 neurons, activation: relu
+3. layer: 9 neurons, activation: relu
+4. layer: 3 output neurons, activation: Softmax (Softmax makes sure, that the outputs get transformed to probabilities)
+
+**Loss function:**
+Categorical crossentropy (since we're delaing with multi label outputs)
+
+**Optimizer:** 
+adam
 
 ## Get Started
 
@@ -56,15 +61,24 @@ To run the training of the artificial neural network, run the ANN.ipynb with jup
 
 ## Results
 
-The network yielded a top accuracy of 90 %.
+The network yielded a top accuracy of 90 %, which beat the previous rule-based algorithm by more than 5 %, so this is a big success!
 
-However, the real accuracy is probably much higher, since many pictures are edge cases (e.g. where the angle was only 0.1 degree too high for a correct prediction).
+But even better after looking at some predictions, the real accuracy is probably much higher, since many pictures are edge cases (e.g. where the angle was only 0.1 degree too high for a correct prediction).
 
-The following accuracy and loss plots show that the ANN learned very well:
+The following accuracy and loss plots show that the ANN learned very well already after only 20 epochs.
 
 ![title](images/accuracyGraph.png)
 ![title](images/lossGraph.png)
 
+Training time was very low and can be run in under 2 minutes on a standard CPU.
+
+## Future improvements:
+
+As already mentioned, wrong posture is often on a continuous scale. Therefore, instead of having discrete labels as outputs, the 
+neural network could be trained to predict a continuous output, which shows the magnitude of wrong posture.
+
+Furthermore, the data is a time series. Therefore, a recurrent neural network such as an Long-Short-Term Memory Network could be trained such that
+past data flows into the prediction of the current frame which will probably increase accuracy even more.
 
 ## Project Plan:
 
