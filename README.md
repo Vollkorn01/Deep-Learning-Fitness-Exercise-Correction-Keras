@@ -5,7 +5,7 @@ This repository is created during the Neural Networks and Deep Learning course a
 The goal is to detect wrong posture from the plank fitness exercise using outputs from human keypoint detection.
 The use case of this project is an AI fitness coach that can detect wrong posture during a workout by just using a smartphone.
 
-The following picture shows the keypoint detection during a plank. In this case, it would be easy to detect whether the hips are too high by calculating the angle between the points shoulder, hips and feet.
+The following picture shows the keypoint detection during a plank. In this case, it would be easy to detect whether the hips are too high by calculating the angle between the shoulder, hips and feet.
 
 ![title](images/19-17-24.187.humans.jpeg)
 
@@ -21,12 +21,27 @@ We trained an artificial neural network to detect whether the position of the ba
 ## Training
 
 In order to collect the ground-truth, we labeled 8'000 pictures of people doing plank. The images were labeled by freelancers on the outsourcing platform upwork.
-VGG image annotator was used to label relevant keypoints from which the angle of the back was calculated:
+VGG image annotator was used to label relevant keypoints:
 
 ![title](images/plankAnnotation.gif)
 
 
-If the angle is between 178 and 190 degrees the position was correct (label 1), else too low (label 0) or too high (label 2). These thresholds were set by consulting a professional fitness coach.
+As a next step, we calculated the angle of the back from these keypoints. If the angle is between 178 and 190 degrees the position was correct (label 1), else too low (label 0) or too high (label 2). These thresholds were set by consulting a professional fitness coach.
+We then added the correct labels to the original data, where keypoints were often missing or erroneous, which was the dataset we trained on.
+
+## Architecture
+
+After testing many combinations, the following architecture yielded the best results:
+Inputs: 36 features (18 keypoints with their x and y values)
+
+### 4 fully connected layers:
+1. layer: 36 neurons, activation relu
+2. layer: 18 neurons, activation relu
+3. layer: 9 neurons, activation relu
+4. layer: 3 output neurons, activation Softmax (Softmax makes sure, that the outputs get transformed to probabilities)
+
+### Loss function: Categorical crossentropy (since we're delaing with multi label outputs)
+### Optimizer: adam
 
 ## Get Started
 
