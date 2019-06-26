@@ -31,28 +31,28 @@ VGG image annotator was used to label relevant keypoints:
 
 
 As a next step, we calculated the angle of the back from these keypoints. If the angle is between 178 and 190 degrees the position was correct (label 1), else too low (label 0) or too high (label 2). These thresholds were set by consulting a professional fitness coach.
-We then added the correct labels to the original data, where keypoints were often missing or erroneous, which was the dataset we trained on. This is a snapshot of our dataset:
+We then added the correct labels to the original data to create the dataset that we trained on. This is a snapshot of our dataset:
 
 ![title](images/table.png)
 
 
-As you can see, many values are NaN's, which are values that were not detected and which makes a rule-based mistake detection difficult.
+As you can see, many keypoints were not detected (depicted as NaNs), which makes a rule-based mistake detection difficult as already explained above.
 
 
 ## Pre-Processing
 
-Unfortunately, the data consisting the keypoints (= position of limbs such as shoulders, hips etc) were not in a table format but in a text format and had to be pre-processed as follows:
+Unfortunately, the data with the keypoints (= position of limbs such as shoulders, hips etc) were not in a table format but in a text format and had to be pre-processed as follows:
 1. Get only relevant keypoints: On many images, no one was training. So first, an algorithm had to be created which extracted all the images and accompanying keypoints text files, where a person was actually training (files: getStateExercising.py, removeStateNoneImages.py)
 2. Convert these textfiles containing keypoints into a dataframe that can be processed. (files: removeFirstLineOfTextFile.py, txtToDataFrame.py)
 3. Convert labeled images into a dataframe. (file: labelsToDataFrame.py)
 4. Calculate actual labels from labeled images by calculating the angle of the hips (file: calculateAngle.py)
-5. Combine labels from 3. to dataframe from 1. to one dataset (file: combineDataSets.py)
+5. Combine labels from 3. to dataframe from 1. to the final training dataset (file: combineDataSets.py)
 6. Standardize, Remove NaN's and split into train and testset (included in ANN.ipynb)
 
 
 ## Architecture
 
-After testing many combinations, the following architecture yielded the best results:
+After testing many combinations, the following architecture yielded the best results: 
 
 **Inputs:** 
 36 features (18 keypoints with their x and y values)
@@ -63,18 +63,20 @@ After testing many combinations, the following architecture yielded the best res
 3. layer: 9 neurons, activation: relu
 4. layer: 3 output neurons, activation: Softmax (Softmax makes sure, that the outputs get transformed to probabilities)
 
+(We called it the flipped pyramid :P )
+
 **Loss function:**
 Categorical crossentropy (since we're delaing with multi label outputs)
 
 **Optimizer:** 
-adam
+Adam
 
 
 ## Results
 
 The network yielded a top accuracy of 90 %, which beat the previous rule-based algorithm by more than 5 %, so this is a big success!
 
-But even better after looking at some predictions, the real accuracy is probably much higher, since many pictures are edge cases (e.g. where the angle was only 0.1 degree too high for a correct prediction).
+Even better: After looking at some predictions, the real accuracy is probably much higher, since many pictures are edge cases (e.g. where the angle was only 0.1 degree too high for a correct prediction) and therefore the predictions still make sense.
 
 The following accuracy and loss plots show that the ANN learned very well already after only 20 epochs.
 
