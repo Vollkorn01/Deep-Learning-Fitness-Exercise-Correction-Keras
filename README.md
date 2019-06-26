@@ -1,9 +1,30 @@
 # DeepLearningExerciseCorrection
 
 ## Overview
-This repository is created during a Machine Learning Course at the University of Zürich.
-The goal is to detect mistakes from fitness exercises using outputs from human keypoint detection.
+This repository is created during the Neural Networks and Deep Learning course at the University of Zürich.
+The goal is to detect wrong posture from the plank fitness exercise using outputs from human keypoint detection.
+
+The following picture shows the keypoint detection during a plank. In this case, it would be easy to detect execution mistakes (such as the hips being too low).
+
 ![title](images/19-17-24.187.humans.jpeg)
+
+However, often the detection is erroneous: 
+
+![title](images/14-37-42.747.humans.jpeg)
+
+We trained an artificial neural network to detect whether the position of the back was too low, correct or too high from the keypoints, even if not all keypoints were detected.
+
+
+## Training
+
+In order to collect the ground truth, we labeled 8'000 pictures of people doing plank. The images were labeled by freelancers on the outsourcing platform upwork.
+VGG image annotator was used to label relevant keypoints from which the angle of the back was calculated. 
+
+![title](images/plankAnnotation.gif)
+
+
+If the angle was between 178 and 190 degrees the position was correct (label 1), else too low (label 0) or too high (label 2).
+
 
 Project Plan:
 
