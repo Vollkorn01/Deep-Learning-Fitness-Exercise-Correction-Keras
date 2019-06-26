@@ -1,5 +1,9 @@
 # Correcting Wrong Posture on the Plank Fitness Exercise
 
+## Get Started
+
+To run the training of the artificial neural network, run the ANN.ipynb with jupyter notebook. All necessary requirements are in the requirements.txt which can be installed by running `pip install -r requirements.txt`.
+
 ## Overview
 This repository is created during the Neural Networks and Deep Learning course at the University of Zürich.
 The goal is to detect wrong posture from the plank fitness exercise using outputs from human keypoint detection.
@@ -17,13 +21,13 @@ In this case, we would need to use another approach to detect an angle. This is 
 
 We trained an artificial neural network to detect whether the position of the back was **too low**, **correct** or **too high**, even if not all keypoints were detected.
 
+## Dataset
 
-## Training
-
-In order to collect the ground-truth, we labeled 8'000 pictures of people doing plank. The images were labeled by freelancers on the outsourcing platform upwork.
+In order to collect the ground-truth, we labeled 8'000 pictures of people doing plank. The images were labeled by freelancers on the outsourcing platform upwork and created from Beta users of the fitness app VAY Sports (www.vay-sports.com). The original images were removed to protect the privacy of the users. Labeling costs were 100$.
 VGG image annotator was used to label relevant keypoints:
 
 ![title](images/plankAnnotation.gif)
+
 
 
 As a next step, we calculated the angle of the back from these keypoints. If the angle is between 178 and 190 degrees the position was correct (label 1), else too low (label 0) or too high (label 2). These thresholds were set by consulting a professional fitness coach.
@@ -34,6 +38,16 @@ We then added the correct labels to the original data, where keypoints were ofte
 
 As you can see, many values are NaN's, which are values that were not detected and which makes a rule-based mistake detection difficult.
 
+
+## Pre-Processing
+
+Unfortunately, the data consisting the keypoints (= position of limbs such as shoulders, hips etc) were not in a table format but in a text format and had to be pre-processed as follows:
+1. Get only relevant keypoints: On many images, no one was training. So first, an algorithm had to be created which extracted all the images and accompanying keypoints text files, where a person was actually training (files: getStateExercising.py, removeStateNoneImages.py)
+2. Convert these textfiles containing keypoints into a dataframe that can be processed. (files: removeFirstLineOfTextFile.py, txtToDataFrame.py)
+3. Convert labeled images into a dataframe. (file: labelsToDataFrame.py)
+4. Calculate actual labels from labeled images by calculating the angle of the hips (file: calculateAngle.py)
+5. Combine labels from 3. to dataframe from 1. to one dataset (file: combineDataSets.py)
+6. Standardize, Remove NaN's and split into train and testset (included in ANN.ipynb)
 
 
 ## Architecture
@@ -55,9 +69,6 @@ Categorical crossentropy (since we're delaing with multi label outputs)
 **Optimizer:** 
 adam
 
-## Get Started
-
-To run the training of the artificial neural network, run the ANN.ipynb with jupyter notebook. All necessary requirements are in the requirements.txt which can be installed by running `pip install -r requirements.txt`.
 
 ## Results
 
