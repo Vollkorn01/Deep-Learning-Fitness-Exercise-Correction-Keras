@@ -1,12 +1,12 @@
-# Correcting Wrong Posture on the Plank Fitness Exercise using a Neural Network with Keras
+# Wrong Posture Detection on the Plank Fitness Exercise using a Artificial Neural Network with Keras
 
 ## Get Started
 
-To run the training of the artificial neural network, run the ANN.ipynb with jupyter notebook. All necessary requirements are in the requirements.txt which can be installed by running `pip install -r requirements.txt`.
+To run the training of the artificial neural network, run the ANN.ipynb as a jupyter notebook. All necessary requirements are in the requirements.txt which can be installed by running `pip install -r requirements.txt`.
 
 ## Overview
 This repository is created during the Neural Networks and Deep Learning course at the University of Zürich.
-The goal is to detect wrong posture from the plank fitness exercise using outputs from human keypoint detection.
+The goal is to detect wrong posture from the plank fitness exercise using *outputs* from a human keypoint detection algorithm.
 The use case of this project is an AI fitness coach that can detect wrong posture during a workout by just using a smartphone.
 We used Keras for training the ANN.
 
@@ -101,7 +101,7 @@ Training time was very low and can be run in under 2 minutes on a standard CPU.
 ## Future improvements
 
 As already mentioned, wrong posture is often on a continuous scale. Therefore, instead of having discrete labels as outputs, the 
-neural network could be trained to predict a continuous output, which shows the magnitude of wrong posture.
+neural network could be trained to predict a continuous output, which would show the magnitude of wrong posture.
 
 Furthermore, the data is a time series. Therefore, a recurrent neural network such as an Long-Short-Term Memory Network could be trained such that
 past data flows into the prediction of the current frame. This would most-likely increase the accuracy.
