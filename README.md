@@ -82,6 +82,8 @@ The network yielded a 5-fold cross-validation test set accuracy of 86 %, which b
 
 Even better: After looking at some predictions, the real accuracy is probably much higher, since many pictures are edge cases (e.g. where the angle was only 0.1 degree too high for a correct prediction) and therefore the predictions would still make sense.
 
+We didn't implement a validation accuracy, since we didn't optimize on a very large amount of hyperparameters.
+
 The following accuracy and loss plots show that the ANN learned very well already after only 20 epochs.
 
 ![title](images/accuracyGraph.png)
