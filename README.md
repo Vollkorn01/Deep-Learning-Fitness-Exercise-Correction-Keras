@@ -1,4 +1,4 @@
-# Correcting Wrong Posture on the Plank Fitness Exercise
+# Correcting Wrong Posture on the Plank Fitness Exercise using a Neural Network with Keras
 
 ## Get Started
 
@@ -8,6 +8,7 @@ To run the training of the artificial neural network, run the ANN.ipynb with jup
 This repository is created during the Neural Networks and Deep Learning course at the University of Zürich.
 The goal is to detect wrong posture from the plank fitness exercise using outputs from human keypoint detection.
 The use case of this project is an AI fitness coach that can detect wrong posture during a workout by just using a smartphone.
+We used Keras for training the ANN.
 
 The following picture shows the keypoint detection during a plank. In this case, it would be easy to detect whether the hips are too high by calculating the angle between the shoulder, hips and feet.
 
@@ -53,7 +54,7 @@ We even did data augmentation to increase the size of the data set by flipping a
 
 ## Architecture
 
-After testing many combinations, the following architecture yielded the best results: 
+After testing many combinations, the following architecture yielded the best results (for the whole model have a look at ANN.ipynb): 
 
 **Inputs:** 
 36 features (18 keypoints with their x and y values)
@@ -72,12 +73,14 @@ Categorical crossentropy (since we're delaing with multi label outputs)
 **Optimizer:** 
 Adam
 
+We also implemented batch-normalization and tested the network with up to 512 neurons per layer, however the results didn't improve. (batch norm implementation and crossvalidation can be found in ANN_crossvalidated.ipynb)
+
 
 ## Results
 
-The network yielded a top testset accuracy of 90 %, which beat the previous rule-based algorithm by around 8%!
+The network yielded a 5-fold cross-validation test set accuracy of 86 %, which beat the previous rule-based algorithm by around 6%!
 
-Even better: After looking at some predictions, the real accuracy is probably much higher, since many pictures are edge cases (e.g. where the angle was only 0.1 degree too high for a correct prediction) and therefore the predictions still make sense.
+Even better: After looking at some predictions, the real accuracy is probably much higher, since many pictures are edge cases (e.g. where the angle was only 0.1 degree too high for a correct prediction) and therefore the predictions would still make sense.
 
 The following accuracy and loss plots show that the ANN learned very well already after only 20 epochs.
 
