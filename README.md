@@ -1,5 +1,4 @@
-# Wrong Posture Detection on the Plank Fitness Exercise using a Artificial Neural Network with Keras
-
+# Detecting Wrong Posture of the Plank Fitness Exercise using an Artificial Neural Network
 ## Get Started
 
 To run the training of the artificial neural network, run the ANN.ipynb as a jupyter notebook. All necessary requirements are in the requirements.txt which can be installed by running `pip install -r requirements.txt`.
